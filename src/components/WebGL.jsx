@@ -15,13 +15,14 @@ const WebGL = () => {
       <Canvas id="canvas">
         <Glow />
         <CamAnimation />
+        <MountainScene />
         {/* <SpaceScene /> */}
-        <SceneTransition
+        {/* <SceneTransition
           A={<MountainScene />}
           B={<SpaceScene />}
           duration={0.8}
           ease="power2.inOut"
-        />
+        /> */}
         {/* <OrbitControls /> */}
         <ambientLight />
       </Canvas>
