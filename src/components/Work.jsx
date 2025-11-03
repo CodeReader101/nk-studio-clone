@@ -54,15 +54,6 @@ const Work = () => {
       ref={container}
       className="h-screen w-screen text-white grid grid-rows-[3fr_1fr]"
     >
-      <div className="absolute flex justify-center items-center w-full h-full gap-10">
-        <div ref={pic1Ref} className=" w-20 preserve-3D">
-          <img src="/images/pic1.jpg" alt="" />
-        </div>
-        <div ref={pic2Ref} className=" w-20">
-          <img src="/images/pic2.jpg" alt="" />
-        </div>
-      </div>
-
       <div className="flex justify-center items-center">
         <div ref={textRef} className="flex flex-col items-center">
           <div className="text-sm">DIGITAL</div>
