@@ -8,7 +8,10 @@ import fragmentShader from "@/shaders/particles/fragment.glsl";
 const RisingParticles = () => {
   //   const particleGeometry = new THREE.SphereGeometry(1, 32, 32);
   const particlesRef = useRef();
-
+  // const particleTexture = useLoader(
+  //   THREE.TextureLoader,
+  //   "/textures/particleTexture.webp"
+  // );
   const particleGeometry = new THREE.BufferGeometry();
 
   const count = 1000;
@@ -24,15 +27,15 @@ const RisingParticles = () => {
     new THREE.BufferAttribute(positions, 3)
   );
 
-  //   const particleMaterial = new THREE.PointsMaterial({
-  //     size: 5,
-  //     sizeAttenuation: false,
-  //     color: "#15d7a5",
-  //     alphaMap: particleTexture,
-  //     transparent: true,
-  //     alphaTest: 0.001,
-  //     blending: THREE.AdditiveBlending,
-  //   });
+  // const particleMaterial = new THREE.PointsMaterial({
+  //   size: 5,
+  //   sizeAttenuation: false,
+  //   color: "#15d7a5",
+  //   alphaMap: particleTexture,
+  //   transparent: true,
+  //   alphaTest: 0.001,
+  //   blending: THREE.AdditiveBlending,
+  // });
 
   //   const particleMaterial = new THREE.ShaderMaterial({
   //     vertexShader: vertexShader,
@@ -46,35 +49,11 @@ const RisingParticles = () => {
     uniforms: {
       uTime: { value: 0 },
       uColor: { value: new THREE.Color("#15d7a5") },
-      uGlow: { value: 1.7 }, // >1.0 makes bloom kick in
+      uGlow: { value: 1.7 },
       uSize: { value: 0.15 },
     },
-    vertexShader: `
-    uniform float uTime, uSize;
-    varying float vAlpha;
-    void main() {
-      // perspective-correct point size
-      vec4 mv = modelViewMatrix * vec4(position, 1.0);
-      gl_Position = projectionMatrix * mv;
-      gl_PointSize = uSize * (300.0 / -mv.z);
-      // simple fade towards edge driven in fragment
-      vAlpha = 1.0;
-    }
-  `,
-    fragmentShader: `
-    uniform vec3  uColor;
-    uniform float uGlow; // multiply to exceed 1.0 for bloom
-    varying float vAlpha;
-    void main() {
-      // circular soft sprite
-      vec2 uv = gl_PointCoord * 2.0 - 1.0;
-      float r = length(uv);
-      if (r > 1.0) discard;
-      float soft = smoothstep(1.0, 0.0, r);       // soft edge
-      vec3 col = uColor * uGlow;                  // HDR when uGlow>1
-      gl_FragColor = vec4(col, soft * vAlpha);
-    }
-  `,
+    vertexShader: vertexShader,
+    fragmentShader: fragmentShader,
     toneMapped: false,
   });
 

@@ -6,8 +6,6 @@ import * as THREE from "three";
 import Glow from "./Glow";
 import MountainScene from "./MountainScene";
 import CamAnimation from "./CamAnimation";
-import SceneTransition from "./SceneTransition";
-import SpaceScene from "./SpaceScene";
 
 const WebGL = () => {
   return (
@@ -16,14 +14,6 @@ const WebGL = () => {
         <Glow />
         <CamAnimation />
         <MountainScene />
-        {/* <SpaceScene /> */}
-        {/* <SceneTransition
-          A={<MountainScene />}
-          B={<SpaceScene />}
-          duration={0.8}
-          ease="power2.inOut"
-        /> */}
-        {/* <OrbitControls /> */}
         <ambientLight />
       </Canvas>
     </div>

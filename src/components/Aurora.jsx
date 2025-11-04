@@ -1,7 +1,6 @@
-import { OrbitControls } from "@react-three/drei";
-import { Canvas, useFrame, extend } from "@react-three/fiber";
+import { useFrame, extend } from "@react-three/fiber";
 import { LayerMaterial, Depth, Fresnel } from "lamina";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 
 import CustomLayer from "./CustomLayer";
 
